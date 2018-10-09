@@ -1,0 +1,12 @@
+-- CREATE TABLE users(
+--   user_id serial PRIMARY KEY,
+--   firstname VARCHAR (50) NOT NULL,
+--   lastname VARCHAR (50) NOT NULL,
+--   password VARCHAR (50) NOT NULL,
+--   email VARCHAR(355) NOT NULL
+-- )
+-- CREATE TABLE posts(
+-- postid  serial PRIMARY KEY,
+-- user_id INTEGER REFERENCES users(user_id)
+
+-- )
