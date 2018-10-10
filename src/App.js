@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Route } from 'react-router-dom';
 import './App.css';
-import Dashboard from './component/Dashboard/Dashboard';
-import Auth from './component/Auth/Auth';
-import Post from './component/Post/Post';
-import Form from './component/Form/Form';
 import Nav from './component/Nav/Nav';
+import routes from './routes';
+
 
 class App extends Component {
+
   render() {
+    
     return (
       <div className="App">
-          <Nav/>
-          <Auth/>
-          <Dashboard />
-          <Form/>
-          <Post/>
+          <Route path={['/new','/Post:postid','/dashboard']} component={Nav}/>
+          {routes}
 
       </div>
     );

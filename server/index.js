@@ -6,7 +6,7 @@ const express = require('express'),
     cors = require('cors');
     controller = require(__dirname+'/controller.js');
 
-app.use(cors);
+app.use(cors());
 app.use(bodyParser.json());
 
 
@@ -23,3 +23,9 @@ massive(process.env.CONNECTION_STRING).then(db=>{
     console.log(`Error connecting to database`, err.message)
 })
 
+
+//Endpoints
+
+//Register New User
+app.post('/api/users',controller.create);
+app.get('/api/user', controller.read);
