@@ -1,2 +1,2 @@
-Insert into users(firstname,lastname,password,email)
-values($1,$2,$3,$4);
+Insert into users(username,password)
+values($1,$2);

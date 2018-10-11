@@ -1,0 +1,5 @@
+need to check auth for the redirect
+need to test endpoints for post and login
+also need to change firstname lastnmae in db to username.
+
+need to build in redirect into the auth login function to go to dashboard

@@ -29,3 +29,4 @@ massive(process.env.CONNECTION_STRING).then(db=>{
 //Register New User
 app.post('/api/users',controller.create);
 app.get('/api/user', controller.read);
+app.post('/api/login',controller.read);
