@@ -1,16 +1,21 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import './auth.css';
+import {connect} from 'react-redux';
+import {registerUserRed} from '../../ducks/reducer';
 
 
 
 
-export default class Auth extends Component{
+class Auth extends Component{
     constructor(){
         super()
         this.state={
             username:'',
-            password:''
+            user_id:'',
+            password:'',
+            profilePic:``
         }
         
     }
@@ -18,9 +23,9 @@ export default class Auth extends Component{
     registerUser(){
         const {username,password} = this.state;
         const profilePic = `https://robohash.org/${username}.png` //<img src=></img>
-        axios.post('/api/users',{username,password}).then(()=>{
+        axios.post('/api/users',{username,password,profilePic}).then(()=>{
             
-            this.setState({username:'',password:''})
+            this.setState({username:'',password:'',profilePic:''})
             this.props.history.push('/dashboard')
         })
     }
@@ -51,19 +56,24 @@ export default class Auth extends Component{
 
     render(){
         return (
-            <div>
-                <div>
-                    <input onChange={(e)=>this.handleusername(e.target.value)} placeholder='username'></input>
-                    <input onChange={(e)=>{this.handlePassword(e.target.value)}} placeholder='Password'></input>
+            <div className="holder">
+                <div className="authTile" >
+                    <div>
+                        <input onChange={(e)=>this.handleusername(e.target.value)} placeholder='username'></input>
+                        <input onChange={(e)=>{this.handlePassword(e.target.value)}} placeholder='Password'></input>
+                        
+                    </div>
                     <img src='https://robohash.org/bronnnki.png'></img>
-                </div>
-               <div>
-                   {/* buttons need to redirect to dasboard upon success thus not likely with the link because needs to be an async redirect */}
-                  {/* Maybe use a creat parent around the buttons that fires asychronously after .then document.getElementByID(create parent LINK.redirect dashboard) */}
-                   <Link to='/dashboard'><button onClick={()=>this.loginUser()}>Login</button></Link>
-                   <Link to='/dashboard'><button onClick={()=>this.registerUser()}>Register</button></Link>
+                    <div>
+                        {/* buttons need to redirect to dasboard upon success thus not likely with the link because needs to be an async redirect */}
+                        {/* Maybe use a creat parent around the buttons that fires asychronously after .then document.getElementByID(create parent LINK.redirect dashboard) */}
+                        <Link to='/dashboard'><button onClick={()=>this.loginUser()}>Login</button></Link>
+                        <Link to='/dashboard'><button onClick={()=>this.registerUser()}>Register</button></Link>
+                    </div>
                </div>
             </div>
         )
         }
 }
+
+export default connect(null, {registerUserRed})

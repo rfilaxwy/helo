@@ -14,7 +14,7 @@ function Nav(props){
             <Link to='/'><button>Logout</button></Link>
 
             <div>
-                <h4>Welcome ${props.username}</h4>
+                <h4>Welcome {props.username}</h4>
                 <img src={profPicUrl}></img>
             </div>
         </div>
