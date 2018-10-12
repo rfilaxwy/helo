@@ -21,7 +21,7 @@ export default function reducer(state=initialState,action){
 export function registerLogUser(username, user_id, profilePic){
     return{
         type: REGISTER_LOG_USER,
-        payload: initialState
+        payload: {username,user_id,profilePic}
     }
 }
 

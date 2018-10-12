@@ -1,3 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+*{
+  font-family: 'Open Sans'
+}
+
 .App {
   text-align: center;
   background-image: linear-gradient(to right, #FF70A6, #FF9770, #FFd670,#E9FF70);

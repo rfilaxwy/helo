@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 function Nav(props){
     let random = Math.floor(Math.random()*50);
     let profPicUrl = props.username ? `https://robohash.org/${props.username}.png`:`https://robohash.org/${random}.png`;//
-    console.log(profPicUrl)
+    console.log(props)
     return(
         
         <div>
@@ -14,8 +14,8 @@ function Nav(props){
             <Link to='/'><button>Logout</button></Link>
 
             <div>
-                <h4>Welcome {props.username}</h4>
-                <img src={profPicUrl}></img>
+                <h4>Welcome {props.username} id {props.user_id}</h4>
+                <img src={profPicUrl} alt="User robo avatar."></img>
             </div>
         </div>
     )
