@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './auth.css';
 import {connect} from 'react-redux';
-import {registerUserRed} from '../../ducks/reducer';
+import {registerLogUser} from '../../ducks/reducer';
 
 
 
@@ -23,8 +23,9 @@ class Auth extends Component{
     registerUser(){
         const {username,password} = this.state;
         const profilePic = `https://robohash.org/${username}.png` //<img src=></img>
-        axios.post('/api/users',{username,password,profilePic}).then(()=>{
-            
+        axios.post('/api/users',{username,password,profilePic}).then((res)=>{
+            console.log(res)
+            registerLogUser();
             this.setState({username:'',password:'',profilePic:''})
             this.props.history.push('/dashboard')
         })
@@ -39,7 +40,7 @@ class Auth extends Component{
                 console.log(`Username ${username} and password combo do not match our directory, try registering.`)
             }
             /////NEED TO BUILD IN REDIRECT to dashboard
-
+            registerLogUser()
         })
     }
 
@@ -76,4 +77,4 @@ class Auth extends Component{
         }
 }
 
-export default connect(null, {registerUserRed})
+export default connect(null, {registerLogUser})(Auth);

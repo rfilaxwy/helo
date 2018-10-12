@@ -4,12 +4,12 @@ const initialState ={
     profilePic:''
 }
 
-const REGISTER_USER = 'REGISTER_USER';
+const REGISTER_LOG_USER = 'REGISTER_LOG_USER';
 
 export default function reducer(state=initialState,action){
     let {payload} = action ;
     switch(action.type){
-        case REGISTER_USER:
+        case REGISTER_LOG_USER:
             return Object.assign({}, state, {username:payload.username,user_id:payload.user_id,profilePic:payload.profilePic});
         // case:;
         // case:;
@@ -18,11 +18,10 @@ export default function reducer(state=initialState,action){
     }
 }
 
-export function registerUserRed(username, user_id, profilePic){
+export function registerLogUser(username, user_id, profilePic){
     return{
-        type: REGISTER_USER,
+        type: REGISTER_LOG_USER,
         payload: initialState
     }
 }
 
-export default reducer;

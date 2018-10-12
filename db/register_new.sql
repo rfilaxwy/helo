@@ -1,2 +1,2 @@
-Insert into users(username,password)
-values($1,$2);
+Insert into users(username,password,profilepic)
+values($1,$2,$3);
