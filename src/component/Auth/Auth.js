@@ -63,7 +63,7 @@ class Auth extends Component{
                     <img alt ='Logo' src={profilePic}></img>
                     <div className="inputs">
                         <div><span>Username:</span> <input onChange={(e)=>this.handleusername(e.target.value)}></input></div>
-                        Password: <input onChange={(e)=>{this.handlePassword(e.target.value)}}></input>
+                        <div><span>Password:</span> <input onChange={(e)=>{this.handlePassword(e.target.value)}}></input></div>
                         
                     </div>
                     

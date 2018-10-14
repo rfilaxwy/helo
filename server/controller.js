@@ -16,5 +16,36 @@ module.exports={
                 })
             }
         })
+    },
+    read:(req,res,next)=>{
+        const db = req.app.get('db');
+        db.get_posts().then(result=>{
+            res.status(200).send(result)
+        })
+    },
+    post:(req,res,next)=>{
+        const db = req.app.get('db');
+        const {search, user_id} =req.body
+        if(search && user_id){
+            db.title_user_match().then(result=>{
+                res.status(200).send(result)
+            })
+        } else if(search && !user_id){
+            db.title_match().then(result=>{
+                res.status(200).send(result)
+            })
+        } else if(!search && user_id){
+            db.user_not_match().then(result=>{
+                res.status(200).send(result)
+            })
+
+        } else {
+            db.get_posts().then(result=>{
+                res.status(200).send(result)
+            })
+        }
+        db.get_posts().then(result=>{
+            res.status(200).send(result)
+        })
     }
 }

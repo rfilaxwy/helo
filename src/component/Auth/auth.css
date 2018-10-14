@@ -14,7 +14,9 @@
     padding:15px;
     width: 400px;
     height: 55%;
+    background-image: linear-gradient(to right, #FF70A6, #FF9770, #FFd670,#E9FF70);
     box-shadow: 1px 7px 20px 1px  rgba(24, 38, 43, 0.39);
+    border-radius: 4px;
 }
 
 button{
@@ -27,6 +29,7 @@ input{
     background-color: rgb(255, 255, 255);
     margin:5px;
     display:inline-block;
+    width:85px;
 }
 .inputs{
     display:flex;
