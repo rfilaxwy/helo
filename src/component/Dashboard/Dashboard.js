@@ -14,6 +14,7 @@ class Dashboard extends Component{
         }
         this.handleCheck=this.handleCheck.bind(this);
         this.search=this.search.bind(this);
+        this.reset=this.reset.bind(this);
     }
 
     componentDidMount(){
@@ -37,6 +38,12 @@ class Dashboard extends Component{
 
     reset(){
         this.setState({search:''})
+        let posts =[];
+
+        axios.get('/api/posts').then(response=>{
+            posts=[...response.data];
+            this.setState({posts:posts})
+        })
     }
 
 
@@ -94,9 +101,9 @@ class Dashboard extends Component{
                 
                     <div className='dashPane'>
                         <input onChange={(e)=>this.handleSearch(e.target.value)}></input>
-                        <button onClick={this.search}>Search logo</button>
+                        <button onClick={this.search}>Search</button>
                         <button onClick={this.reset}>Reset</button>
-                        <span>My posts<input type="checkbox"  onChange={this.handleCheck} checked={checked}></input></span>
+                        <label for='checkBox'>My posts</label><input id='checkBox'type="checkbox"  onChange={this.handleCheck} checked={checked}></input>
                     </div>
                     <div className='dashPane'>
                         {posts}

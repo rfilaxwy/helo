@@ -12,7 +12,11 @@ function Nav(props){
             <div>
                 
                 <img className="avatar" src={profPicUrl} alt="User robo avatar."></img>
-                <h4>Welcome {props.username} id {props.user_id}</h4>
+                <h4>Welcome: <br/> 
+                    {props.username}<br/> 
+                    ID:<br/>
+                    {props.user_id}
+                </h4>
             </div>
             <Link to='/dashboard'><button>Home</button></Link>
             <Link to='/new'><button>New Post</button></Link>
