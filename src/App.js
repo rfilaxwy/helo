@@ -6,7 +6,15 @@ import routes from './routes';
 
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state={
+     username:''
 
+    }
+  }
+
+ 
   render() {
     
     return (

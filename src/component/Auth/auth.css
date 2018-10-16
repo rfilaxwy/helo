@@ -27,16 +27,24 @@ button{
 }
 input{
     background-color: rgb(255, 255, 255);
-    margin:5px;
+    margin:2px;
     display:inline-block;
     width:85px;
 }
 .inputs{
     display:flex;
-    flex-direction: column;
+    flex-direction:column;
     width:40%;
     align-self: center;
 }
 img{
     margin:auto;
+}
+.authLogo{
+    border-radius:50%;
+    width:50%;
+    height:auto;
+}
+label{
+    display:inline;
 }

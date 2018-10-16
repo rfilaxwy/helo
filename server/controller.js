@@ -4,7 +4,8 @@ module.exports={
         const db = req.app.get('db');
 //Need to check DB for user pw combo. if not existing then register new user else login user.
         db.select_user(username,password).then(result=>{
-            if(!result.data){
+            
+            if(result.length<1){
                 db.register_new(username,password,profilePic).then(result=>{
                     db.select_user(username,password).then(result=>{
                        res.status(200).send(result) 
@@ -27,15 +28,15 @@ module.exports={
         const db = req.app.get('db');
         const {search, user_id} =req.body
         if(search && user_id){
-            db.title_user_match().then(result=>{
+            db.title_user_match(search,user_id).then(result=>{
                 res.status(200).send(result)
             })
         } else if(search && !user_id){
-            db.title_match().then(result=>{
+            db.title_match(search).then(result=>{
                 res.status(200).send(result)
             })
         } else if(!search && user_id){
-            db.user_not_match().then(result=>{
+            db.user_not_match(user_id).then(result=>{
                 res.status(200).send(result)
             })
 
@@ -44,8 +45,8 @@ module.exports={
                 res.status(200).send(result)
             })
         }
-        db.get_posts().then(result=>{
-            res.status(200).send(result)
-        })
+        // db.get_posts().then(result=>{
+        //     res.status(200).send(result)
+        // })
     }
 }

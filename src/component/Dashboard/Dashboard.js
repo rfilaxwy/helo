@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import './Dashboard.css';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
-export default class Dashboard extends Component{
-    constructor(){
-        super()
+class Dashboard extends Component{
+    constructor(props){
+        super(props)
         this.state={
             search:'',
             posts:[],
+            
             checked:true
         }
         this.handleCheck=this.handleCheck.bind(this);
@@ -15,7 +17,9 @@ export default class Dashboard extends Component{
     }
 
     componentDidMount(){
-        let posts =[]
+        
+        let posts =[];
+
         axios.get('/api/posts').then(response=>{
             posts=[...response.data];
             this.setState({posts:posts})
@@ -35,26 +39,28 @@ export default class Dashboard extends Component{
         this.setState({search:''})
     }
 
+
+    //Change the req.body to parameter for user_id and query for search string.
     search(){
-        
-        const {user_id,search}= this.state;
+        const {user_id} =this.props;
+        const {search}= this.state;
         let posts=[];
         debugger
-        if(this.state.search && this.state.checked){
+        if(search && this.state.checked){
             debugger
             //axios get all posts where title match
             axios.put(`/api/posts`,{search}).then(response=>{
                 posts=[...response.data]
                 this.setState({posts:posts})
             })
-        }else if(!this.state.search && !this.state.checked){
+        }else if(!search && !this.state.checked){
             
             debugger//Return all posts except user posts
             axios.put(`/api/posts`,{params:{user_id}}).then(response=>{
                 posts=[...response.data]
                 this.setState({posts:posts})
             })
-        }else if(this.state.search && !this.state.checked){
+        }else if(search && !this.state.checked){
             debugger
             //Return sll posts with search title except users
             axios.put(`/api/posts`,{search,user_id}).then(response=>{
@@ -101,3 +107,10 @@ export default class Dashboard extends Component{
         )
     }
 }
+function mapStateToProps(state){
+    const {user_id}= state;
+    return{
+
+    }
+}
+export default connect(mapStateToProps,{})(Dashboard)
